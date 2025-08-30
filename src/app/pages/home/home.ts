@@ -7,7 +7,7 @@ import { Header } from "../../header/header";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, SlicePipe, Header],
+  imports: [FormsModule, SlicePipe, Header, RouterLink],
   templateUrl: 'home.html',
   styleUrl: 'home.css'
 })
