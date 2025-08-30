@@ -1,0 +1,27 @@
+<app-header />
+<div class="main-container">
+<div class="container">
+  <textarea
+    name="title"
+    class="title"
+    id="title"
+    placeholder="Title"
+    [(ngModel)]="title"
+  ></textarea>
+  <textarea
+    class="content"
+    name="content"
+    id="content"
+    placeholder="Start typing..."
+    [(ngModel)]="content"
+  ></textarea>
+
+  <div class="footer">
+    <span>Last edited on <em>09:45, 24/9/24</em></span>
+    <div>
+      <button>Save as draft</button>
+      <button (click)="submitBlog()">Publish</button>
+    </div>
+  </div>
+</div>
+</div>

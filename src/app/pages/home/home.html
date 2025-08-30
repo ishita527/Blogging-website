@@ -1,0 +1,42 @@
+<app-header/>
+<div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h1 class="sidebar-title">Dashboard</h1>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active">Articles</a></li>
+                    <li><a href="#">Comments</a></li>
+                    <li><a href="#">Stats</a></li>
+                    <li><a href="#">Earnings</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <h1 class="main-title">Article List</h1>
+
+                @for(blog of blogs; track blog.id){
+                 <div class="card">
+                     <div class="card-content">
+                         <div class="card-header">
+                             <div class="card-title-section">
+                                 <h4 class="card-title">{{blog.title}}</h4>
+                                 <p class="card-date">Published on: August 19, 2025</p>
+                             </div>
+                             <span class="status-badge status-published">Published</span>
+                         </div>
+                         <p class="card-body">
+                             {{blog.content | slice : 0:100}}
+                         </p>
+                     </div>
+                 </div> 
+                } @empty{ 
+                    <p>No blogs available.</p>
+                }
+            </div>
+        </main>
+    </div>
