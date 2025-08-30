@@ -38,6 +38,11 @@ header {
 
 .author-name {
   margin-left: 0.5rem;
-  font-weight: 600;
+  font-weight: 400;
   vertical-align: middle;
+  color: black;
+}
+
+a:visited{
+    color: black;
 }
