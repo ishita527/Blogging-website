@@ -4,6 +4,7 @@ import { Api } from '../../services/api';
 import { SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Header } from "../../header/header";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -14,9 +15,16 @@ import { Header } from "../../header/header";
 export class Home implements OnInit {
   blogs: any[] = [];
 
-  constructor(private api: Api) {}
+  constructor(private api: Api, private router: Router) {}
 
   async ngOnInit() {
     this.blogs = await this.api.getBlogs();
+    console.log(this.blogs);
+  }
+
+  viewBlog(id: number) {
+    this.router.navigate(['/create-blog', id]);
+    console.log(id);
   }
 }
+

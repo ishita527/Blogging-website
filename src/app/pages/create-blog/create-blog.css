@@ -99,13 +99,10 @@ button:active {
   transform: scale(0.97);
 }
 
-a:focus {
-  outline: 2px solid var(--btn-primary);
-  outline-offset: 4px;
-  border-radius: 6px;
+.footer-buttons {
+  display: flex;
+  gap: 0.5rem;
 }
 
-a:visited{
-  color: black;
-}
+
 

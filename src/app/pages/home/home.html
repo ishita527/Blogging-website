@@ -20,7 +20,7 @@
                 <h1 class="main-title">Your blogs</h1>
 
                 @for(blog of blogs; track blog.id){
-                 <div class="card">
+                 <div class="card" (click)="viewBlog(blog.id)">
                      <div class="card-content">
                          <div class="card-header">
                              <div class="card-title-section">

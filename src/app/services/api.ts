@@ -19,4 +19,8 @@ export class Api {
   addBlog(title: string, content: string) {
     return firstValueFrom(this.http.post<any>(`${this.baseUrl}/blogs`, { title, content }));
   }
+
+  getBlogById(id: number) {
+    return firstValueFrom(this.http.get<any>(`${this.baseUrl}/blogs/${id}`));
+  }
 }
