@@ -8,7 +8,6 @@ import { parse } from 'path';
 
 @Component({
   selector: 'app-create-blog',
-  standalone: true,
   imports: [FormsModule, Header],
   templateUrl: './create-blog.html',
   styleUrl: './create-blog.css'
@@ -24,8 +23,7 @@ export class CreateBlog {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-    console.log(params);
-    if(params){
+    if(params['id']) {
       this.blog_id = params['id'];
       this.viewBlog();
     }
