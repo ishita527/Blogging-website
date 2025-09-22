@@ -1,42 +1,48 @@
-<app-header/>
+<app-header />
 <div class="dashboard-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <h1 class="sidebar-title">Dashboard</h1>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a [routerLink]="['/create-blog']" class="active">Create a new blog</a></li>
-                    <li><a href="#">Comments</a></li>
-                    <li><a href="#">Stats</a></li>
-                    <li><a href="#">Earnings</a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>
-            </nav>
-        </aside>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h1 class="sidebar-title">Dashboard</h1>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a [routerLink]="['/create-blog']" class="active">Create a new blog</a></li>
+        <li><a href="#">Comments</a></li>
+        <li><a href="#">Stats</a></li>
+        <li><a href="#">Earnings</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="container">
-                <h1 class="main-title">Your blogs</h1>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <h1 class="main-title">Your blogs</h1>
 
-                @for(blog of blogs; track blog.id){
-                 <div class="card" (click)="viewBlog(blog.id)">
-                     <div class="card-content">
-                         <div class="card-header">
-                             <div class="card-title-section">
-                                 <h4 class="card-title">{{blog.title | slice : 0:100}}</h4>
-                                 <p class="card-date">Published on: August 19, 2025</p>
-                             </div>
-                             <span class="status-badge status-published">Published</span>
-                         </div>
-                         <p class="card-body">
-                             {{blog.content | slice : 0:100}}
-                         </p>
-                     </div>
-                 </div> 
-                } @empty{ 
-                    <p>No blogs available.</p>
-                }
+      @for(blog of blogs; track blog.id){
+      <div class="card" (click)="viewBlog(blog.id)">
+        <div class="card-content">
+          <div class="card-actions">
+            <div><span class="status-badge status-published">Published</span></div>
+            <div class="action-icons">
+                <i title ="edit" class="fa-solid fa-pen icons"></i>
+                <i  title ="delete" class="fa-solid fa-trash icons"></i>
             </div>
-        </main>
+          </div>
+          <div class="card-header">
+            <div class="card-title-section">
+              <h4 class="card-title">{{ blog.title | slice : 0 : 100 }}</h4>
+              <p class="card-date">Published on: August 19, 2025</p>
+            </div>
+          </div>
+          <p class="card-body">
+            {{ blog.content | slice : 0 : 200 }}
+          </p>
+        </div>
+      </div>
+      } @empty{
+      <p>No blogs available.</p>
+      }
     </div>
+  </main>
+</div>

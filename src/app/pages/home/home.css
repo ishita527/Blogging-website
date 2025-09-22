@@ -165,6 +165,34 @@
     /* leading-relaxed */
 }
 
+.card-actions {
+    margin-top: 1.5rem;
+    /* mt-6 */
+    display: flex;
+    gap:1rem;
+    justify-content: space-between;
+    /* space-x-3 */
+}
+
+.icons{
+    color: #9c9e9e;
+    cursor: pointer;
+}
+
+.icons:hover{
+    color: #000000;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+h4{
+    margin: 1rem 0 0.5rem 0;
+}
+.action-icons{
+    display: flex;
+    gap: 1rem;
+}
+
 /* --- Responsive Design --- */
 
 /* Medium screens and down (md: 768px) */
