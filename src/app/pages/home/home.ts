@@ -5,9 +5,10 @@ import { SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Header } from "../../header/header";
 import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, SlicePipe, Header, RouterLink],
+  imports: [FormsModule, SlicePipe, Header, RouterLink, NgClass],
   templateUrl: 'home.html',
   styleUrl: 'home.css'
 })

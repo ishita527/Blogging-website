@@ -1,4 +1,4 @@
-header {
+/* header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,13 +7,13 @@ header {
   padding-bottom: 0.8rem;
   height: 48px;
   background: white;
-}
+} */
 
 
-.menu {
+/* .menu {
   display: flex;
   gap: 1rem;
-}
+} */
 
 .menu div {
   background: var(--btn-secondary);
@@ -36,22 +36,22 @@ header {
   vertical-align: middle;
 }
 
-.author-name {
+/* .author-name {
   margin-left: 0.5rem;
   font-weight: 400;
   vertical-align: middle;
   color: black;
-}
+} */
 
 a:visited{
     color: black;
 }
 
-.author-details{
+/* .author-details{
   display: inline-block;
   position: relative;
   cursor: pointer;
-}
+} */
 
 .dropdown-menu{
   position: absolute;
