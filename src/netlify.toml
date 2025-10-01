@@ -1,0 +1,9 @@
+[build]
+  command = "ng build && ng run my-app:server"
+  publish = "dist/browser"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/angular-runtime"
