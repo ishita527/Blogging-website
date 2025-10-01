@@ -16,17 +16,21 @@ export class Login {
 
   constructor(private api: Api, private router: Router) {}
 
-  async login() {
-    try {
-      const res = await this.api.login(this.username, this.password);
-      console.log(res);
-      if (res.success) {
-        this.router.navigate(['/home']);
-      } else {
-        this.error = "Invalid credentials";
-      }
-    } catch {
-      this.error = "Login failed";
-    }
+  // async login() {
+  //   try {
+  //     const res = await this.api.login(this.username, this.password);
+  //     console.log(res);
+  //     if (res.success) {
+  //       this.router.navigate(['/home']);
+  //     } else {
+  //       this.error = "Invalid credentials";
+  //     }
+  //   } catch {
+  //     this.error = "Login failed";
+  //   }
+  // }
+
+  login(){
+    
   }
 }

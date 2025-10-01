@@ -4,21 +4,7 @@
     /* min-height: 100vh; */
 }
 
-/* Sidebar styling */
-.sidebar {
-    width: 240px;
-    background-color: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    /* gray-200 */
-    padding: 1.5rem;
-    /* flex-shrink: 0; Prevents sidebar from shrinking */
-}
 
-.sidebar-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-}
 
 .sidebar-nav ul {
     list-style: none;
@@ -90,6 +76,7 @@
     /* mb-6 */
     width: 100%;
     cursor: pointer;
+    padding: 1.5rem;
 }
 
 .card-content {

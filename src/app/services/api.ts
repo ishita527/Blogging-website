@@ -1,26 +1,59 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, timeout } from 'rxjs';
+import {blog, login_data} from './blogs'
 
 @Injectable({ providedIn: 'root' })
 export class Api {
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'https://blog-post-mqs4.onrender.com/api/blogs';
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
-    return firstValueFrom(this.http.post<any>(`${this.baseUrl}/login`, { username, password }));
+    return this.http.post<login_data>(`${this.baseUrl}/login`, { username, password });
   }
 
   getBlogs() {
-    return firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/blogs`));
+    return this.http.get<blog[]>(`${this.baseUrl}`).pipe(timeout(5000));
   }
 
   addBlog(title: string, content: string) {
-    return firstValueFrom(this.http.post<any>(`${this.baseUrl}/blogs`, { title, content }));
+    return this.http.post<blog>(
+      `${this.baseUrl}`,
+      { title: title, content: content },
+      {
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
+        },
+      }
+    );
   }
 
   getBlogById(id: number) {
-    return firstValueFrom(this.http.get<any>(`${this.baseUrl}/blogs/${id}`));
+    return this.http.get(`${this.baseUrl}/${id}`, {
+      headers: {
+        Authorization: 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
+      },
+    }).pipe(timeout(5000))
+  }
+
+  updateBlogById(id: number, title: string, content: string){
+    return this.http.put(`${this.baseUrl}/${id}`, {title, content}, {
+       headers: {
+          'Content-type': 'application/json',
+          'Authorization': 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
+        },
+
+    })
+  }
+
+  deleteBlog(id: number){
+    return this.http.delete(`${this.baseUrl}/${id}`, {
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
+        },
+    })
   }
 }

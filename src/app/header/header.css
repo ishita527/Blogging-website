@@ -15,7 +15,7 @@
   gap: 1rem;
 } */
 
-.menu div {
+/* .menu div {
   background: var(--btn-secondary);
   padding: 0.5rem 0.7rem;
   border-radius: 50%;
@@ -25,7 +25,7 @@
 
 .menu div:hover {
   background: var(--btn-secondary-hover);
-}
+} */
 
 
 .display-picture {

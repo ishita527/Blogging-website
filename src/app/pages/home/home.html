@@ -2,7 +2,7 @@
 <div class="dashboard-layout">
   <!-- Sidebar -->
   <aside class="w-3xs border-r border-amber-100 p-10">
-    <h1 class="sidebar-title">Dashboard</h1>
+    <h1 class="font-bold text-xl mb-8">Dashboard</h1>
     <nav class="sidebar-nav">
       <ul>
         <li><a [routerLink]="['/create-blog']" class="active">Create a new blog</a></li>
@@ -20,28 +20,26 @@
       <h1 class="main-title">Your blogs</h1>
 
       @for(blog of blogs; track blog.id){
-      <div class="card" (click)="viewBlog(blog.id)">
-        <div class="card-content">
-          <div class="card-actions">
-            <div><span class="status-badge status-published">Published</span></div>
-            <div class="action-icons">
-                <i title ="edit" class="fa-solid fa-pen icons"></i>
-                <i  title ="delete" class="fa-solid fa-trash icons"></i>
-            </div>
+      <div class="card" >
+        <div class="card-actions">
+          <div><span class="status-badge status-published">Published</span></div>
+          <div class="action-icons">
+            <i title="edit" (click) = "viewBlog(blog.id)" class="fa-solid fa-pen icons"></i>
+            <i title="delete" (click) = "deleteBlog(blog.id)"class="fa-solid fa-trash icons"></i>
           </div>
-          <div class="card-header">
-            <div class="card-title-section">
-              <h4 class="card-title">{{ blog.title | slice : 0 : 100 }}</h4>
-              <p class="card-date">Published on: August 19, 2025</p>
-            </div>
-          </div>
-          <p class="card-body">
-            {{ blog.content | slice : 0 : 200 }}
-          </p>
         </div>
+        <div class="card-header" (click)="viewBlog(blog.id)">
+          <div class="card-title-section">
+            <h4 class="card-title">{{ blog.title | slice : 0 : 100 }}</h4>
+            <p class="card-date">Published on: {{blog.updatedAt}}</p>
+          </div>
+        </div>
+        <p class="card-body">
+          {{ blog.excerpt | slice: 0: 200}}
+        </p>
       </div>
       } @empty{
-      <p>No blogs available.</p>
+      <p>{{errorMessage}}</p>
       }
     </div>
   </main>
