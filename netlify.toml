@@ -1,6 +1,6 @@
 [build]
   command = "ng build && ng run blogging-website:server"
-  publish = "dist/browser"
+  publish = "dist/blogging_website/browser"
 
 [build.environment]
   NODE_VERSION = "18"
