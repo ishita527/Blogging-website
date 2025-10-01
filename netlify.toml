@@ -1,5 +1,5 @@
 [build]
-  command = "ng build && ng run blogging-website:server"
+  command = "ng build && ng run blogging_website:server"
   publish = "dist/blogging_website/browser"
 
 [build.environment]
