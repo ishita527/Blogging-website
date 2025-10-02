@@ -20,11 +20,11 @@
 
     @if(!errorStatus){
     <div class="flex justify-center">
-      <p class="max-w-150">
-        <i class="fa-solid fa-triangle-exclamation" style="color: #ffd43b"></i> Network error - Try reloading or check your internet connection!
+      <p>
+        <i class="fa-solid fa-triangle-exclamation" style="color: #ffd43b"></i> {{errorMessage}}
       </p>
     </div>
-    } @else{
+    } 
     <div class="footer">
       <span
         >Last edited on <em>{{ date }}</em></span
@@ -34,6 +34,5 @@
         <button (click)="submitBlog()">Publish</button>
       </div>
     </div>
-    }
   </div>
 </div>

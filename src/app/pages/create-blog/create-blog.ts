@@ -17,6 +17,9 @@ export class CreateBlog {
   @Input() date = new Date().toLocaleDateString();
   disabled = false;
   errorStatus = 1;
+  errorMessage = 'Network error - Try reloading or check your internet connection!';
+  successMessage = '';
+  submitted = false;
   // theme='default'
 
   constructor(private api: Api, private router: Router, private route: ActivatedRoute) {}
@@ -40,25 +43,38 @@ export class CreateBlog {
         this.content = data.content;
         this.date = new Date(data.updatedAt).toLocaleDateString();
       },
-      error: (error) => (this.errorStatus = 0),
+      error: (error) => {
+        console.log(error)
+        this.errorStatus = 0;
+        this.errorMessage = error.message;
+      },
     });
   }
   submitBlog() {
     if (this.title && this.content) {
-      if(!this.blog_id){
-        this.api.addBlog(this.title, this.content).subscribe((res) => {
-        console.log(res);
-        this.router.navigate(['/home']);
-      });
+      if (!this.blog_id) {
+        this.api.addBlog(this.title, this.content).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.router.navigate(['/home']);
+          },
+          error: (error) => {
+            this.errorStatus = 0;
+            this.errorMessage = error.message;
+          },
+        });
+      } else {
+        this.api.updateBlogById(this.blog_id, this.title, this.content).subscribe({
+          next: (res) => {
+            this.router.navigate(['/home']);
+            console.log(res);
+          },
+          error: (error) => {
+            this.errorStatus = 0;
+            this.errorMessage = error.message;
+          },
+        });
       }
-
-      else{
-        this.api.updateBlogById(this.blog_id, this.title, this.content).subscribe(res => {
-          console.log(res);
-          
-        })
-      }
-      
     }
   }
 }

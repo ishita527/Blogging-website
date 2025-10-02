@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, timeout } from 'rxjs';
 import {blog, login_data} from './blogs'
+import { time } from 'console';
 
 @Injectable({ providedIn: 'root' })
 export class Api {
@@ -27,7 +28,7 @@ export class Api {
           'Authorization': 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
         },
       }
-    );
+    ).pipe(timeout(5000));
   }
 
   getBlogById(id: number) {
@@ -45,7 +46,7 @@ export class Api {
           'Authorization': 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
         },
 
-    })
+    }).pipe(timeout(5000))
   }
 
   deleteBlog(id: number){
@@ -54,6 +55,6 @@ export class Api {
           'Content-type': 'application/json',
           'Authorization': 'Basic ' + btoa('admin1' + ':' + 'admin_1_123'),
         },
-    })
+    }).pipe(timeout(5000))
   }
 }
