@@ -24,8 +24,8 @@
         <div class="card-actions">
           <div><span class="status-badge status-published">Published</span></div>
           <div class="action-icons">
-            <i title="edit" (click) = "viewBlog(blog.id)" class="fa-solid fa-pen icons"></i>
-            <i title="delete" (click) = "deleteBlog(blog.id)"class="fa-solid fa-trash icons"></i>
+            <fa-icon [icon]="fapen" title="edit" (click) = "viewBlog(blog.id)" id="pen"></fa-icon>
+            <fa-icon [icon]="fatrash" title="delete" (click) = "deleteBlog(blog.id)"></fa-icon>
           </div>
         </div>
         <div class="card-header" (click)="viewBlog(blog.id)">

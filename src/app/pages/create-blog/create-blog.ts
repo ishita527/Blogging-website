@@ -4,9 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Api } from '../../services/api';
 import { Header } from '../../header/header';
 import { blog } from '../../services/blogs';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-create-blog',
-  imports: [FormsModule, Header],
+  imports: [FormsModule, Header, FontAwesomeModule],
   templateUrl: './create-blog.html',
   styleUrl: './create-blog.css',
 })
@@ -20,6 +22,7 @@ export class CreateBlog {
   errorMessage = 'Network error - Try reloading or check your internet connection!';
   successMessage = '';
   submitted = false;
+  fatriangle = faTriangleExclamation;
   // theme='default'
 
   constructor(private api: Api, private router: Router, private route: ActivatedRoute) {}

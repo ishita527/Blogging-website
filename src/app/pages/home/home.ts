@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,10 +8,12 @@ import { inject } from '@angular/core';
 import { Api } from '../../services/api';
 import '../../services/blogs';
 import { blog } from '../../services/blogs';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FaIconComponent, FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, SlicePipe, Header, RouterLink],
+  imports: [FormsModule, SlicePipe, Header, RouterLink, FontAwesomeModule],
   templateUrl: 'home.html',
   styleUrl: 'home.css',
 })
@@ -21,6 +23,8 @@ export class Home implements OnInit {
   private api = inject(Api);
   date: Date = new Date('2025-10-01T07:50:47.443967');
   errorMessage = 'No blogs available';
+  fapen = faPen;
+  fatrash = faTrash;
 
   constructor() {}
 
