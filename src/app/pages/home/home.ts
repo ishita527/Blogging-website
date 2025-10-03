@@ -47,10 +47,12 @@ export class Home implements OnInit {
   }
 
   deleteBlog(id: number){
-    this.api.deleteBlog(id).subscribe(res =>{
+    this.api.deleteBlog(id).subscribe({ next: res =>{
       console.log(res);
       this.ngOnInit();
-    })
+    },
+    error: (error) => console.log(`${error.status}: ${error.statusText}`)
+  })
 
   }
 }
