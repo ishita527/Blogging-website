@@ -2,15 +2,21 @@ import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgClass } from "@angular/common";
 import { NgOptimizedImage } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {faEnvelope, faHouse, faPalette, faFont} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, NgClass, NgOptimizedImage],
+  imports: [RouterLink, NgClass, NgOptimizedImage, FontAwesomeModule],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
 export class Header {
 
+  faenvelope = faEnvelope;
+  fahouse = faHouse;
+  fapallet = faPalette;
+  fafont = faFont;
   showMenu = false;
 
   logout(){

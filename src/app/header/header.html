@@ -1,20 +1,40 @@
-<header class="pt-2 pb-2 flex justify-between items-center bg-white border-b border-(--border) mt-4">
-    <div class="flex gap-4">
-      <a [routerLink]="['/home']"
-        ><div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)" title="home"><i class="fa-solid fa-house"></i></div
-      ></a>
-      <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)" title="email"><i class="fa-solid fa-envelope"></i></div>
-      <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)" title="change-theme"><i class="fa-solid fa-palette"></i></div>
-      <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"><i class="fa-solid fa-font"></i></div>
+<header
+  class="pt-2 pb-2 flex justify-between items-center bg-white border-b border-(--border) mt-4"
+>
+  <div class="flex gap-4">
+    <a [routerLink]="['/home']"
+      ><div
+        class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
+        title="home"
+      >
+        <fa-icon [icon]="fahouse"></fa-icon></div
+    ></a>
+    <div
+      class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
+      title="email"
+    >
+      <fa-icon [icon]="faenvelope"></fa-icon>
     </div>
-    <div class="cursor-pointer relative flex items-center" (click)="showMenu = !showMenu">
-      <img class="rounded-[50%] inline" ngSrc="display-picture.jpg" width="30" height="40" />
-      <span class="ml-1">Ishita H.</span>
+    <div
+      class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
+      title="change-theme"
+    >
+      <fa-icon [icon]="fapallet"></fa-icon>
     </div>
-</header>
-  <div class="dropdown-menu" [ngClass]="{ hidden: showMenu === false }">
-    <ul>
-      <li (click)="logout()">Logout</li>
-      <li>Settings</li>
-    </ul>
+    <div
+      class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
+    >
+      <fa-icon [icon]="fafont"></fa-icon>
+    </div>
   </div>
+  <div class="cursor-pointer relative flex items-center" (click)="showMenu = !showMenu">
+    <img class="rounded-[50%] inline" ngSrc="display-picture.jpg" width="30" height="40" />
+    <span class="ml-1">Ishita H.</span>
+  </div>
+</header>
+<div class="dropdown-menu" [ngClass]="{ hidden: showMenu === false }">
+  <ul>
+    <li (click)="logout()">Logout</li>
+    <li>Settings</li>
+  </ul>
+</div>
