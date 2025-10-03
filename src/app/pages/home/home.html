@@ -24,8 +24,12 @@
         <div class="card-actions">
           <div><span class="status-badge status-published">Published</span></div>
           <div class="action-icons">
-            <fa-icon [icon]="fapen" title="edit" (click) = "viewBlog(blog.id)" id="pen"></fa-icon>
-            <fa-icon [icon]="fatrash" title="delete" (click) = "deleteBlog(blog.id)"></fa-icon>
+            <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)">
+              <fa-icon [icon]="fapen" title="edit" (click) = "viewBlog(blog.id)" id="pen"></fa-icon>
+            </div>
+            <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)">
+              <fa-icon [icon]="fatrash" title="delete" (click) = "deleteBlog(blog.id)"></fa-icon>
+            </div>
           </div>
         </div>
         <div class="card-header" (click)="viewBlog(blog.id)">
