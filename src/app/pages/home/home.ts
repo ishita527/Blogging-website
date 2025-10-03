@@ -9,7 +9,8 @@ import { Api } from '../../services/api';
 import '../../services/blogs';
 import { blog } from '../../services/blogs';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FaIconComponent, FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @Component({
   selector: 'app-home',
@@ -35,28 +36,32 @@ export class Home implements OnInit {
         this.blogs.forEach((blog) => {
           blog.updatedAt = new Date(blog.updatedAt).toLocaleDateString();
         });
-        console.log(this.blogs)
+        console.log(this.blogs);
       },
       error: (error) => {
         this.errorMessage = error.message;
-        console.log(error.message)
+        console.log(error.message);
       },
     });
   }
 
-  viewBlog(id: number) {
-    console.log('blog viewed!')
-    this.router.navigate(['/create-blog', id]);
-    
+  viewBlog(event: MouseEvent, id: number, title: string) {
+    console.log(event)
+    if (event.target) {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.action-icons') || target.closest('#pen')) {
+        this.router.navigate(['/create-blog', id, title]);
+      }
+    }
   }
 
-  deleteBlog(id: number){
-    this.api.deleteBlog(id).subscribe({ next: res =>{
-      console.log(res);
-      this.ngOnInit();
-    },
-    error: (error) => console.log(`${error.status}: ${error.statusText}`)
-  })
-
+  deleteBlog(id: number) {
+    this.api.deleteBlog(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.ngOnInit();
+      },
+      error: (error) => console.log(`${error.status}: ${error.statusText}`),
+    });
   }
 }
