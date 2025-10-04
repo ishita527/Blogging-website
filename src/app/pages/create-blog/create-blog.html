@@ -1,5 +1,10 @@
 <app-header />
 <div class="main-container">
+  @if(this.spinnerStart){
+    <div class="flex justify-center mb-0.5">
+      <fa-icon [icon]="faspinner" [animation]="'spin'"></fa-icon>
+    </div>
+  }
   <div class="container">
     <textarea
       name="title"

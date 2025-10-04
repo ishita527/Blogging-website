@@ -8,7 +8,7 @@ import { inject } from '@angular/core';
 import { Api } from '../../services/api';
 import '../../services/blogs';
 import { blog } from '../../services/blogs';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -26,12 +26,15 @@ export class Home implements OnInit {
   errorMessage = 'No blogs available';
   fapen = faPen;
   fatrash = faTrash;
-
+  faspinner = faSpinner;
+  spinnerStart = false;
   constructor() {}
 
   ngOnInit() {
+    this.spinnerStart = true;
     this.api.getBlogs().subscribe({
       next: (data) => {
+        this.spinnerStart = false;
         this.blogs = data;
         this.blogs.forEach((blog) => {
           blog.updatedAt = new Date(blog.updatedAt).toLocaleDateString();
@@ -40,6 +43,7 @@ export class Home implements OnInit {
       },
       error: (error) => {
         this.errorMessage = error.message;
+        this.spinnerStart = false;
         console.log(error.message);
       },
     });
@@ -56,12 +60,18 @@ export class Home implements OnInit {
   }
 
   deleteBlog(id: number) {
+    this.spinnerStart = true;
     this.api.deleteBlog(id).subscribe({
       next: (res) => {
+        this.spinnerStart = false;
         console.log(res);
         this.ngOnInit();
       },
-      error: (error) => console.log(`${error.status}: ${error.statusText}`),
+      error: (error) => {
+        console.log(`${error.status}: ${error.statusText}`)
+        this.spinnerStart = false;
+        
+      },
     });
   }
 }

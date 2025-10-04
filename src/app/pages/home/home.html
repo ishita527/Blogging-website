@@ -18,6 +18,9 @@
   <main class="main-content">
     <div class="container">
       <h1 class="main-title">Your blogs</h1>
+      @if(spinnerStart){
+          <fa-icon [icon]="faspinner" [animation]="'spin'"></fa-icon>
+      }
 
       @for(blog of blogs; track blog.id){
       <div class="card"  (click)="viewBlog($event, blog.id, blog.title)">
@@ -43,7 +46,10 @@
         </p>
       </div>
       } @empty{
-      <p>{{errorMessage}}</p>
+      @if(!spinnerStart){
+          <p>{{errorMessage}}</p>
+      }
+  
       }
     </div>
   </main>

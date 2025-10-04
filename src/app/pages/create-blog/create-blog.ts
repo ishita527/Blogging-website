@@ -5,7 +5,7 @@ import { Api } from '../../services/api';
 import { Header } from '../../header/header';
 import { blog } from '../../services/blogs';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation, faSpinner } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-create-blog',
   imports: [FormsModule, Header, FontAwesomeModule],
@@ -23,6 +23,8 @@ export class CreateBlog {
   successMessage = '';
   submitted = false;
   fatriangle = faTriangleExclamation;
+  faspinner = faSpinner;
+  spinnerStart = false;
   // theme='default'
 
   constructor(private api: Api, private router: Router, private route: ActivatedRoute) {}
@@ -39,15 +41,17 @@ export class CreateBlog {
   }
 
   viewBlog() {
+    this.spinnerStart = true;
     this.api.getBlogById(this.blog_id).subscribe({
       next: (data: any) => {
+        this.spinnerStart = false;
         const blog = data;
         this.title = data.title;
         this.content = data.content;
         this.date = new Date(data.updatedAt).toLocaleDateString();
       },
       error: (error) => {
-        console.log(error)
+        this.spinnerStart = false;
         this.errorStatus = 0;
         this.errorMessage = error.message;
       },
@@ -55,13 +59,15 @@ export class CreateBlog {
   }
   submitBlog() {
     if (this.title && this.content) {
+      this.spinnerStart = true;
       if (!this.blog_id) {
         this.api.addBlog(this.title, this.content).subscribe({
           next: (res) => {
-            console.log(res);
+            this.spinnerStart = false;
             this.router.navigate(['/home']);
           },
           error: (error) => {
+            this.spinnerStart = false;
             this.errorStatus = 0;
             this.errorMessage = error.message;
           },
@@ -69,10 +75,12 @@ export class CreateBlog {
       } else {
         this.api.updateBlogById(this.blog_id, this.title, this.content).subscribe({
           next: (res) => {
+            this.spinnerStart = false;
             this.router.navigate(['/home']);
             console.log(res);
           },
           error: (error) => {
+            this.spinnerStart = false;
             this.errorStatus = 0;
             this.errorMessage = error.message;
           },
