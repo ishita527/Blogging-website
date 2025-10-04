@@ -19,38 +19,41 @@
     <div class="container">
       <h1 class="main-title">Your blogs</h1>
       @if(spinnerStart){
-          <fa-icon [icon]="faspinner" [animation]="'spin'"></fa-icon>
-      }
-
-      @for(blog of blogs; track blog.id){
-      <div class="card"  (click)="viewBlog($event, blog.id, blog.title)">
+      <fa-icon [icon]="faspinner" [animation]="'spin'"></fa-icon>
+      } @else { @for(blog of blogs; track blog.id){
+      <div class="card" (click)="viewBlog($event, blog.id, blog.title)">
         <div class="card-actions">
           <div><span class="status-badge status-published">Published</span></div>
           <div class="action-icons">
-            <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)">
-              <fa-icon [icon]="fapen" title="edit" (click) = "viewBlog($event, blog.id, blog.title)" id="pen"></fa-icon>
+            <div
+              (click)="viewBlog($event, blog.id, blog.title)"
+              title="edit"
+              class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
+            >
+              <fa-icon [icon]="fapen" id="pen"></fa-icon>
             </div>
-            <div class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)">
-              <fa-icon [icon]="fatrash" title="delete" (click) = "deleteBlog(blog.id)"></fa-icon>
+            <div
+              (click)="deleteBlog(blog.id)"
+              title="delete"
+              class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
+            >
+              <fa-icon [icon]="fatrash"></fa-icon>
             </div>
           </div>
         </div>
         <div class="card-header">
           <div class="card-title-section">
             <h4 class="card-title">{{ blog.title | slice : 0 : 100 }}</h4>
-            <p class="card-date">Published on: {{blog.updatedAt}}</p>
+            <p class="card-date">Published on: {{ blog.updatedAt }}</p>
           </div>
         </div>
         <p class="card-body">
-          {{ blog.excerpt | slice: 0: 200}}
+          {{ blog.excerpt | slice : 0 : 200 }}
         </p>
       </div>
-      } @empty{
-      @if(!spinnerStart){
-          <p>{{errorMessage}}</p>
-      }
-  
-      }
+      } @empty{ @if(!spinnerStart){
+      <p>{{ errorMessage }}</p>
+      } } }
     </div>
   </main>
 </div>
