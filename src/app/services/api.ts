@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom, timeout } from 'rxjs';
+import {timeout } from 'rxjs';
 import {blog, login_data} from './blogs'
-import { time } from 'console';
 
+
+//Providing this service to root injector -- so only one instance of this service will be shared across all components
 @Injectable({ providedIn: 'root' })
 export class Api {
   private baseUrl = 'https://blog-post-mqs4.onrender.com/api/blogs';

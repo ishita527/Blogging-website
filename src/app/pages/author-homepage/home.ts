@@ -9,7 +9,7 @@ import { Api } from '../../services/api';
 import '../../services/blogs';
 import { blog } from '../../services/blogs';
 import { faPen, faTrash, faSpinner} from '@fortawesome/free-solid-svg-icons';
-import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @Component({
@@ -39,18 +39,15 @@ export class Home implements OnInit {
         this.blogs.forEach((blog) => {
           blog.updatedAt = new Date(blog.updatedAt).toLocaleDateString();
         });
-        console.log(this.blogs);
       },
       error: (error) => {
         this.errorMessage = error.message;
         this.spinnerStart = false;
-        console.log(error.message);
       },
     });
   }
 
   viewBlog(event: MouseEvent, id: number, title: string) {
-    console.log(event)
     if (event.target) {
       const target = event.target as HTMLElement;
       if (!target.closest('.action-icons') || target.closest('#pen')) {
@@ -64,7 +61,6 @@ export class Home implements OnInit {
     this.api.deleteBlog(id).subscribe({
       next: (res) => {
         this.spinnerStart = false;
-        console.log(res);
         this.ngOnInit();
       },
       error: (error) => {

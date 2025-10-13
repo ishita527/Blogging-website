@@ -36,8 +36,6 @@ export class CreateBlog {
         this.viewBlog();
       }
     });
-
-    console.log(this.date);
   }
 
   viewBlog() {
@@ -58,8 +56,10 @@ export class CreateBlog {
     });
   }
   submitBlog() {
+    //submitting only when content and title are not empty
     if (this.title && this.content) {
       this.spinnerStart = true;
+      //post request
       if (!this.blog_id) {
         this.api.addBlog(this.title, this.content).subscribe({
           next: (res) => {
@@ -73,11 +73,11 @@ export class CreateBlog {
           },
         });
       } else {
+        //put request
         this.api.updateBlogById(this.blog_id, this.title, this.content).subscribe({
           next: (res) => {
             this.spinnerStart = false;
             this.router.navigate(['/home']);
-            console.log(res);
           },
           error: (error) => {
             this.spinnerStart = false;

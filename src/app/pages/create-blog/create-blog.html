@@ -1,11 +1,11 @@
 <app-header />
 <div class="main-container">
   @if(this.spinnerStart){
-    <div class="flex justify-center mb-0.5">
-      <fa-icon [icon]="faspinner" [animation]="'spin'"></fa-icon>
-    </div>
+  <div class="flex justify-center mb-0.5">
+    <fa-icon [icon]="faspinner" [animation]="'spin'"></fa-icon>
+  </div>
   }@else{
-     <div class="container">
+  <div class="container">
     <textarea
       name="title"
       class="title"
@@ -25,11 +25,9 @@
 
     @if(!errorStatus){
     <div class="flex justify-center">
-      <p>
-        <fa-icon [icon]="fatriangle" class="caret-amber-300"></fa-icon> {{errorMessage}}
-      </p>
+      <p><fa-icon [icon]="fatriangle" class="caret-amber-300"></fa-icon> {{ errorMessage }}</p>
     </div>
-    } 
+    }
     <div class="footer">
       <span
         >Last edited on <em>{{ date }}</em></span
@@ -41,5 +39,4 @@
     </div>
   </div>
   }
- 
 </div>
