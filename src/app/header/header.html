@@ -7,24 +7,24 @@
         class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
         title="home"
       >
-        <fa-icon [icon]="fahouse"></fa-icon></div
+        <fa-icon [icon]="fa1"></fa-icon></div
     ></a>
     <div
       class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
       title="email"
     >
-      <fa-icon [icon]="faenvelope"></fa-icon>
+      <fa-icon [icon]="fa2"></fa-icon>
     </div>
     <div
       class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
       title="change-theme"
     >
-      <fa-icon [icon]="fapallet"></fa-icon>
+      <fa-icon [icon]="fa3"></fa-icon>
     </div>
     <div
       class="cursor-pointer rounded-[50%] pt-[0.5rem] pb-[0.5rem] pl-[0.7rem] pr-[0.7rem] bg-(--btn-secondary) hover:bg-(--btn-secondary-hover)"
     >
-      <fa-icon [icon]="fafont"></fa-icon>
+      <fa-icon [icon]="fa4"></fa-icon>
     </div>
   </div>
   <div class="cursor-pointer relative flex items-center" (click)="showMenu = !showMenu">
@@ -34,7 +34,9 @@
 </header>
 <div class="dropdown-menu" [ngClass]="{ hidden: showMenu === false }">
   <ul>
-    <li (click)="logout()">Logout</li>
+    <li [routerLink]="['/all-blogs']">View Profile</li>
     <li>Settings</li>
+    <li (click)="logout()">Logout</li>
+
   </ul>
 </div>

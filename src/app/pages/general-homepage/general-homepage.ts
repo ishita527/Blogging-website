@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { blog } from '../../services/blogs';
 import { blogs } from './blogs';
 import { SlicePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faComment, faThumbsUp, faArrowRight, faX} from '@fortawesome/free-solid-svg-icons';
+import { faComment, faThumbsUp, faArrowRight, faX, faSearch} from '@fortawesome/free-solid-svg-icons';
+import { Header } from "../../header/header";
 @Component({
   selector: 'app-general-homepage',
-  imports: [SlicePipe, FontAwesomeModule],
+  imports: [SlicePipe, FontAwesomeModule, Header],
   templateUrl: './general-homepage.html',
   styleUrl: './general-homepage.css'
 })
@@ -16,6 +16,7 @@ export class GeneralHomepage {
     fathumbups = faThumbsUp;
     faArrowRight = faArrowRight;
     faX = faX;
+    faSearch = faSearch;
 
 
 

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { NgClass } from "@angular/common";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {faEnvelope, faHouse, faPalette, faFont} from '@fortawesome/free-solid-svg-icons';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,10 @@ import {faEnvelope, faHouse, faPalette, faFont} from '@fortawesome/free-solid-sv
 })
 export class Header {
 
-  faenvelope = faEnvelope;
-  fahouse = faHouse;
-  fapallet = faPalette;
-  fafont = faFont;
+  @Input() fa2  = faEnvelope;
+  @Input() fa1 = faHouse;
+  @Input() fa3 = faPalette;
+  @Input() fa4 = faFont;
   showMenu = false;
 
   logout(){

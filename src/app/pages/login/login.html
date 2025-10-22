@@ -1,21 +1,20 @@
 <div class="main-container">
-<div class="login-container">
-        <form action="#" method="post">
-            <h2>Login</h2>
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input [(ngModel)]="username" type="text" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input [(ngModel)]="password" type="password" name="password" required>
+  <div class="login-container">
+    <form action="#" method="post">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input [(ngModel)]="username" type="text" name="username" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input [(ngModel)]="password" type="password" name="password" required />
+      </div>
+      <button type="submit" (click)="login()">Log In</button>
+    </form>
 
-            </div>
-            <button type="submit" (click)="login()">Log In</button>
-        </form>
-
-        @if(error){
-            <p>{{error}}</p>
-        }
-    </div>
+    @if(error){
+    <p>{{ error }}</p>
+    }
+  </div>
 </div>
