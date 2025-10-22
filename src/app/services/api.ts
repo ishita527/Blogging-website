@@ -16,7 +16,7 @@ export class Api {
   }
 
   getBlogs() {
-    return this.http.get<blog[]>(`${this.baseUrl}`).pipe(timeout(5000));
+    return this.http.get<blog[]>(`${this.baseUrl}`).pipe(timeout(10000));
   }
 
   addBlog(title: string, content: string) {
