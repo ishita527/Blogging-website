@@ -1,7 +1,7 @@
 <app-header />
 <div class="dashboard-layout">
   <!-- Sidebar -->
-  <aside class="w-3xs border-r border-amber-100 p-10">
+  <aside class="w-3xs border-r border-amber-100 p-10 hidden md:block">
     <h1 class="font-bold text-xl mb-8">Dashboard</h1>
     <nav class="sidebar-nav">
       <ul>
@@ -13,6 +13,42 @@
       </ul>
     </nav>
   </aside>
+    <!-- Mobile Header Bar: Visible only on small screens (up to md) -->
+      <header class="p-4 flex justify-between items-center md:hidden">
+        <h1 class="font-bold text-xl">Dashboard</h1>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button 
+          (click)="toggleMenu()" 
+          class="p-2 rounded-lg text-black bg-[#f3f4f6] hover:bg-[#f3f4f9] transition-colors shadow-sm"
+          aria-label="Toggle Navigation Menu">
+          
+          <!-- Hamburger Icon (visible when menu is closed) -->
+          @if (!isMenuOpen()) {
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          }
+          
+          <!-- Close Icon (visible when menu is open) -->
+          @if (isMenuOpen()) {
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          }
+        </button>
+      </header>
+      @if(isMenuOpen()){
+          <nav class="sidebar-nav text-center md:hidden">
+      <ul>
+        <li><a [routerLink]="['/create-blog']" class="active">Create a new blog</a></li>
+        <li><a href="#">Comments</a></li>
+        <li><a href="#">Stats</a></li>
+        <li><a href="#">Earnings</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+      }
 
   <!-- Main Content -->
   <main class="main-content">

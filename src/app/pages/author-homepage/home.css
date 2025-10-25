@@ -188,13 +188,6 @@ h4{
         flex-direction: column;
     }
 
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #e2e8f0;
-        height: auto;
-    }
-
     .main-content {
         padding: 1.5rem;
     }

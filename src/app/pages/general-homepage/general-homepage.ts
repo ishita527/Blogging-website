@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { blogs } from './blogs';
 import { SlicePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -17,6 +17,14 @@ export class GeneralHomepage {
     faArrowRight = faArrowRight;
     faX = faX;
     faSearch = faSearch;
+
+    userName = 'avinashmth';
+
+    changeUsername(){
+      console.log('hi')
+      this.userName = 'ishi';
+    }
+
 
 
 

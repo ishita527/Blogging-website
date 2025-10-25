@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -29,6 +29,8 @@ export class Home implements OnInit {
   faspinner = faSpinner;
   spinnerStart = false;
   constructor() {}
+
+  isMenuOpen = signal(false);
 
   ngOnInit() {
     this.spinnerStart = true;
@@ -69,5 +71,9 @@ export class Home implements OnInit {
         
       },
     });
+  }
+
+  toggleMenu(){
+    this.isMenuOpen.update((val) => !val);
   }
 }

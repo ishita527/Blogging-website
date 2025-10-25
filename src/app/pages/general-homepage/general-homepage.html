@@ -1,7 +1,7 @@
 
 <section id="author-section" class="mr-auto ml-auto mb-6 mt-4 max-w-[1000px]">
   <div class="p-6 rounded-xl ">
-    <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800 pb-2">About the Author</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800 pb-2"  (click)="changeUsername()" >About the Author</h2>
     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
       <div class="flex-shrink-0 text-center">
         <img
@@ -27,7 +27,7 @@
             title="Follow on Twitter"
           >
             <fa-icon [icon]="faX" [size]="'lg'"></fa-icon>
-            <span class="text-sm font-medium">@avimth898</span>
+            <span class="text-sm font-medium">{{userName}}</span>
           </a>
           }
 
